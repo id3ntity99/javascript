@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.함수</title>
+  </head>
+  <body>
+    <h3>2. 함수</h3>
+    <script>
+      // Function declaration
+      function foo(x) {
+        let y = 2 * x + 3;
+        return y;
+      }
+
+      let y1 = foo(1);
+      let y2 = foo(2);
+      let y3 = foo(3);
+
+      document.write(`y1 = ${y1} <br />`);
+      document.write(`y2 = ${y2} <br />`);
+      document.write(`y3 = ${y3} <br />`);
+
+      // Anonymous function
+      const bar = function (x, y) {
+        return x + y;
+      };
+
+      let z = bar(1, 2);
+      document.write(`z = ${z} <br />`);
+
+      // Arrow function
+      const baz = (x, y) => {
+        return x - y;
+      };
+
+      let result = baz(1, 2);
+      document.write(`resault = ${result} <br />`);
+
+      const qaz = (x, y) => x * y;
+
+      let product = qaz(3, 4);
+      document.write(`product = ${product} <br />`);
+
+      // 내장 함수
+      let s1 = "10";
+      let s2 = "3.14";
+      let s3 = "2025년";
+
+      let r1 = parseInt(s1);
+      let r2 = parseInt(s2);
+      let r3 = parseInt(s3);
+      let r4 = Number(s1);
+      let r5 = Number(s2);
+      let r6 = Number(s3);
+
+      document.write(`r1 = ${r1} <br />`);
+      document.write(`r2 = ${r2} <br />`);
+      document.write(`r3 = ${r3} <br />`);
+      document.write(`r4 = ${r4} <br />`);
+      document.write(`r5 = ${r5} <br />`);
+      document.write(`r6 = ${r6} <br />`);
+
+      // Timer
+      setTimeout(() => {
+        console.log("Time out after 5 secs");
+      }, 5000);
+
+      let i = 0;
+      let interval = setInterval(() => {
+        console.log(`counter = ${i++}`);
+        if (i === 10) {
+          clearInterval(interval);
+        }
+      }, 1000);
+
+      // Dialog
+      alert("Dialog box");
+      const isConfirm = confirm("Dialog box with confirm and cancel");
+
+      if (isConfirm) {
+        document.write('User chose "Confirm" <br />');
+      } else {
+        document.write('User chose "Cancel" <br />');
+      }
+
+      const val = prompt("Prompt Dialog box");
+      document.write("user's value = " + val);
+    </script>
+  </body>
+</html>

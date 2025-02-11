@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. 조건문</title>
+  </head>
+  <body>
+    <h3>3. 조건문</h3>
+
+    <h4>if</h4>
+    <script>
+      let num1 = 1;
+      let num2 = 2;
+
+      if (num1 < num2) document.write("num1 is less than num2<br/>");
+
+      if (num1 > num2) {
+        if (num2 > 1)
+          document.write(
+            "num1 is greater than 0 and num2 is greater than 1<br/>"
+          );
+      }
+
+      if (num1 > 0 && num2 > 1)
+        document.write(
+          "num1 is greater than 0 and num2 is greater than 1<br/>"
+        );
+    </script>
+
+    <h4>if ~ else</h4>
+    <script>
+      let var1 = 1;
+      let var2 = 2;
+      let var3 = 3;
+
+      if (var1 > var2) {
+        document.write("var1 is greater than var2<br/>");
+      } else {
+        document.write("var1 is less than var2<br/>");
+      }
+    </script>
+
+    <h4>if ~ else if ~ else</h4>
+    <script>
+      let n1 = 1,
+        n2 = 2,
+        n3 = 3,
+        n4 = 4;
+
+      if (n1 > n2) {
+        document.write("n1 is greater than n2<br/>");
+      } else if (n2 > n3) {
+        document.write("n2 is greater than n3<br/>");
+      } else if (n3 > n4) {
+        document.write("n3 is greater than n4<br/>");
+      } else {
+        document.write("n4 is the greatest<br/>");
+      }
+    </script>
+
+    <h4>switch</h4>
+    <script>
+      let score = prompt("Score: ");
+      document.write(`Score = ${score}, Type = ${typeof score}<br/>`);
+      let res = parseInt(score / 10);
+      document.write(`Result = ${res}`);
+    </script>
+  </body>
+</html>

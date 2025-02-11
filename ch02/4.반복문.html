@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. 반복문</title>
+  </head>
+  <body>
+    <h3>4. 반복문</h3>
+
+    <h4>for</h4>
+    <script>
+      for (let i = 0; i < 9; i++) {
+        document.write(`${i}<br/>`);
+      }
+
+      let sum = 0;
+      for (let i = 1; i <= 10; i++) {
+        sum += i;
+      }
+      document.write(`SUM(1, 10) = ${sum}<br/>`);
+
+      let evenSum = 0;
+      for (let i = 1; i <= 10; i++) {
+        if (i % 2 == 0) evenSum += i;
+      }
+      document.write(`EVEN_SUM(1, 10) = ${evenSum}<br/>`);
+
+      for (let i = 1; i <= 10; i++) {
+        for (let j = 1; j <= i; j++) {
+          document.write("⭐");
+        }
+        document.write("<br/>");
+      }
+    </script>
+
+    <h4>while</h4>
+    <script>
+      let total = 0;
+      let k = 1;
+      while (k <= 10) {
+        if (k % 2 == 0) total += k++;
+      }
+      document.write(`EVENSUM(1, 10) = ${total} <br/> `);
+
+      let oddSum = 0;
+      let j = 1;
+      do {
+        if (j % 2 == 1) oddSum += j++;
+      } while (j <= 10);
+      document.write(`ODD_SUM(1, 10) = ${oddSum}<br/>`);
+      let i = 0;
+      while (true) {
+        i++;
+        if (i === 10) break;
+      }
+    </script>
+
+    <h4>구구단</h4>
+    <table>
+      <tbody>
+        <th>2단</th>
+        <th>3단</th>
+        <th>4단</th>
+        <th>5단</th>
+        <th>6단</th>
+        <th>7단</th>
+        <th>8단</th>
+        <th>9단</th>
+      </tbody>
+    </table>
+    <script>
+      for (let i = 2; i <= 9; i++) {
+        for (let j = 1; j <= 9; j++) {
+          document.write(`${i} X ${j} = ${i * j}<br/>`);
+        }
+      }
+    </script>
+  </body>
+</html>
