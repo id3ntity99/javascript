@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. DOM 모델</title>
+    <style>
+      .box {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>3. DOM 모델</h3>
+
+    <h4>문서객체 선택</h4>
+    <ul>
+      <li id="seoul">
+        <span>서울</span>
+        <ol>
+          <li><i>용산</i></li>
+          <li><i>명동</i></li>
+          <li><i>종로</i></li>
+          <li><i>신촌</i></li>
+          <li><i>강남</i></li>
+        </ol>
+      </li>
+      <li>대전</li>
+      <li id="daegu">대구</li>
+      <li id="busan">
+        <span>부산</span>
+        <ol>
+          <li class="busan">서면</li>
+          <li class="busan">해운대</li>
+          <li class="busan">광안리</li>
+        </ol>
+      </li>
+      <li class="gwangju">광주</li>
+    </ul>
+    <script>
+      const h3 = document.querySelector("h3");
+      h3.style.color = "red";
+
+      const span = document.querySelector("#seoul > span");
+      span.style.color = "blue";
+
+      const li = document.querySelector("ul > li:nth-child(2)");
+      li.style.color = "green";
+
+      const busan = document.querySelector(".busan");
+      busan.style.color = "#7a7a7a";
+
+      const busanAll = document.querySelectorAll(".busan");
+      busanAll.forEach((item) => {
+        item.style.color = "#7a7a7a";
+      });
+
+      const daegu = document.getElementById("daegu");
+      daegu.style.color = "brown";
+
+      const seouls = document.getElementsByTagName("i");
+      for (const seoul of seouls) {
+        seoul.style.background = "yellow";
+      }
+
+      const gwanju = document.getElementsByClassName("gwangju");
+      gwanju[0].style.color = "lime";
+    </script>
+
+    <h4>문서객체 조작</h4>
+    <img src="" alt="" />
+    <img src="" alt="" />
+
+    <hr />
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+
+    <ul id="city">
+      <li>서울</li>
+      <li>대전</li>
+      <li>대구</li>
+      <li>부산</li>
+      <li>광주</li>
+    </ul>
+
+    <div class="content"></div>
+    <div class="content"></div>
+
+    <div class="box">box1</div>
+    <div class="box green">box2</div>
+    <div class="box">box3</div>
+
+    <script>
+      const images = document.querySelectorAll("img");
+      images.forEach((image) => {
+        image.src = "./images/flower1.jpg";
+      });
+
+      const box1 = document.querySelector(".box1");
+      box1.style.display = "inline-block";
+      box1.style.width = "100px";
+      box1.style.height = "100px";
+      box1.style.border = "1px solid black";
+      box1.style.background = "orange";
+
+      const box2 = document.querySelector(".box2");
+      box2.style.display = "inline-block";
+      box2.style.width = "100px";
+      box2.style.height = "100px";
+      box2.style.border = "1px solid black";
+      box2.style.background = "orange";
+
+      const city = document.getElementById("city");
+      let text = city.innerText;
+      let html = city.innerHTML;
+
+      console.log(`text = ${text}`);
+      console.log(`html = ${html}`);
+
+      const contents = document.getElementsByClassName("content");
+      contents[0].innerText = "<em>TEXT</em>";
+      contents[1].innerHTML = "<em>TEXT</em>";
+
+      const boxes = document.getElementsByClassName("box");
+      boxes[0].classList.add("red");
+      boxes[1].classList.remove("green");
+      boxes[2].classList.toggle("blue");
+    </script>
+
+    <hr />
+    <h4>응용</h4>
+    <div
+      class="canvas"
+      style="
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+      "
+    ></div>
+    <button
+      style="
+        border: 1px solid gray;
+        border-radius: 10px;
+        width: 100px;
+        height: 33px;
+      "
+    >
+      Click Me!!
+    </button>
+    <script>
+      const btn = document.querySelector("button");
+      const canvas = document.querySelector(".canvas");
+
+      function changeColor() {
+        return (
+          "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0")
+        );
+      }
+
+      btn.addEventListener("click", () => {
+        let color = changeColor();
+        canvas.style.backgroundColor = color;
+        canvas.style.border = "1px solid " + color;
+      });
+    </script>
+
+    <h4>문서객체 추가/이동</h4>
+    <ul class="korea">
+      <li>
+        <em>경기도</em>
+        <ol></ol>
+      </li>
+      <li>
+        <em>충청도</em>
+        <ol></ol>
+      </li>
+      <li>
+        <em>강원도</em>
+        <ol></ol>
+      </li>
+      <li>
+        <em>경상도</em>
+        <ol>
+          <li>창원</li>
+          <li>수원</li>
+          <li>목포</li>
+          <li>부여</li>
+          <li>원주</li>
+          <li>파주</li>
+        </ol>
+      </li>
+      <li>
+        <em>전라도</em>
+        <ol></ol>
+      </li>
+    </ul>
+
+    <script>
+      const gyeonggi = document.querySelector(".korea > li:nth-child(1) > ol");
+      const chungchung = document.querySelector(
+        ".korea > li:nth-child(2) > ol"
+      );
+      const gangwon = document.querySelector(".korea > li:nth-child(3) > ol");
+      const gyeongsang = document.querySelector(
+        ".korea > li:nth-child(4) > ol"
+      );
+      const jeolla = document.querySelector(".korea > li:nth-child(5) > ol");
+
+      gyeonggi.insertAdjacentHTML("beforeend", "<li>평택</li>");
+      gyeonggi.insertAdjacentHTML("beforeend", "<li>용인</li>");
+      gyeonggi.insertAdjacentHTML("afterbegin", "<li>성남</li>");
+      gyeonggi.insertAdjacentHTML("afterbegin", "<li>안양</li>");
+
+      chungchung.insertAdjacentHTML("beforeend", "<li>단양</li>");
+      gangwon.insertAdjacentHTML("beforeend", "<li>춘천</li>");
+      jeolla.insertAdjacentHTML("beforeend", "<li>담양</li>");
+
+      const lis = gyeongsang.getElementsByTagName("li");
+      const suwon = lis[1];
+      const mokpo = lis[2];
+      const buyeo = lis[3];
+      const wonju = lis[4];
+      const paju = lis[5];
+
+      gyeonggi.append(suwon);
+      gyeonggi.append(paju);
+
+      jeolla.append(mokpo);
+      chungchung.prepend(buyeo);
+      gangwon.append(wonju);
+    </script>
+
+    <h4>문서객체 생성/삭제</h4>
+    <section>
+      <h5>삭제 예정 태그입니다</h5>
+    </section>
+    <script>
+      const section = document.getElementsByTagName("section")[0];
+      const imgTag = document.createElement("img");
+      imgTag.src = "./images/flower2.jpg";
+      imgTag.alt = "코스코스";
+
+      section.append(imgTag);
+
+      const h5 = section.getElementsByTagName("h5")[0];
+      h5.remove();
+    </script>
+  </body>
+</html>

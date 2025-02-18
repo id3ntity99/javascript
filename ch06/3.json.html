@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. json</title>
+  </head>
+  <body>
+    <h3>3. json</h3>
+    <script>
+      const user = {
+        uid: "a101",
+        name: "김유신",
+        age: "23",
+        addr: "김해시",
+      };
+
+      document.write(`user.uid = ${user.uid} <br />`);
+      document.write(`user.name = ${user.name} <br />`);
+      document.write(`user.age = ${user.age} <br />`);
+      document.write(`user.addr = ${user.addr} <br />`);
+
+      const jsonArr = {
+        users: [
+          {
+            uid: "a102",
+            name: "John Doe",
+            age: 26,
+            addr: "San Diego, California",
+          },
+          {
+            uid: "a103",
+            name: "Alice Doe",
+            age: 24,
+            addr: "San Diego, California",
+          },
+          {
+            uid: "a104",
+            name: "Jessica Jones",
+            age: 32,
+            addr: "Manhattan, New York City",
+          },
+          {
+            uid: "a105",
+            name: "Peter Parker",
+            age: 17,
+            addr: "Queens, New York City",
+          },
+        ],
+      };
+
+      for (const user of jsonArr.users) {
+        document.write(`<p>`);
+        document.write(`uid = ${user.uid} <br/>`);
+        document.write(`name = ${user.name} <br/>`);
+        document.write(`age = ${user.age} <br/>`);
+        document.write(`address = ${user.addr} <br/>`);
+        document.write(`</p>`);
+      }
+
+      // JSON.stringify()
+      const userStr = JSON.stringify(user);
+      const jsonArrStr = JSON.stringify(jsonArr);
+      document.write(`user JSON string = ${userStr} <br />`);
+      document.write(`JSON array string = ${jsonArrStr} <br />`);
+
+      // JSON.parse();
+      const parsedUsr = JSON.parse(userStr);
+      const parsedArr = JSON.parse(jsonArrStr);
+
+      document.write(`parsedUser.uid = ${parsedUsr.uid} <br />`);
+      document.write(`parsedUser.name = ${parsedUsr.name} <br />`);
+      document.write(`parsedUser.age = ${parsedUsr.age} <br />`);
+      document.write(`parsedUser.addr = ${parsedUsr.addr} <br />`);
+    </script>
+  </body>
+</html>

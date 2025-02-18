@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Event</title>
+  </head>
+  <body>
+    <h3>1. Event</h3>
+
+    <h4>Inline Envent Model</h4>
+    <button on="butnHandler()">Button1</button>
+    <button ondblclick="btn2Handler()">Button2</button>
+    <button onmouseup="btn3Handler()">Button3</button>
+
+    <script>
+      function btnHandler() {
+        console.log("clicked");
+      }
+
+      function btn2Handler() {
+        console.log("double-clicked");
+      }
+
+      function btn3Handler() {
+        console.log("mouse up");
+      }
+    </script>
+
+    <h4>Default Event Model</h4>
+    <button id="btn1">Button1</button>
+    <button id="btn2">Button2</button>
+    <button id="btn3">Button3</button>
+
+    <script>
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+
+      btn1.onclick = () => {
+        console.log("clicked");
+      };
+
+      btn2.onmouseenter = () => {
+        console.log("mouse entered");
+      };
+
+      btn3.onmouseout = () => {
+        console.log("mouse got out");
+      };
+    </script>
+
+    <h4>Standard Event Model</h4>
+    <button class="btn4">Button1</button>
+    <button class="btn5">Button2</button>
+    <button class="btn6">Button3</button>
+
+    <script>
+      const btn4 = document.getElementsByClassName("btn4")[0];
+      const btn5 = document.getElementsByClassName("btn5")[0];
+      const btn6 = document.getElementsByClassName("btn6")[0];
+
+      btn4.addEventListener("click", () => {
+        console.log("clicked");
+      });
+
+      btn5.addEventListener("mouseup", () => {
+        console.log("mouse up");
+      });
+
+      btn6.addEventListener("mousedown", () => {
+        console.log("mouse down");
+      });
+    </script>
+  </body>
+</html>

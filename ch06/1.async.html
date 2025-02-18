@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Asynchronous</title>
+  </head>
+  <body>
+    <h3>1. Async</h3>
+    <script>
+      console.log("count = 1");
+      setTimeout(() => {
+        console.log("count = 2");
+      }, 1000);
+      console.log("count = 3");
+
+      // Async with callback function
+      function start(callback) {
+        console.log("start");
+        setTimeout(() => {
+          console.log("processing");
+          callback();
+        }, 1000);
+      }
+
+      function end() {
+        console.log("end");
+      }
+
+      start(end);
+
+      // Callback-hell
+      function step1(callback) {
+        setTimeout(() => {
+          console.log("step1");
+          callback();
+        }, 1000);
+      }
+
+      function step2(callback) {
+        setTimeout(() => {
+          console.log("step2");
+          callback();
+        }, 3000);
+      }
+
+      function step3(callback) {
+        setTimeout(() => {
+          console.log("step3");
+          callback();
+        }, 2000);
+      }
+
+      step1(step2(step3(() => {})));
+    </script>
+  </body>
+</html>

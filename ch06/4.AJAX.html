@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. AJAX</title>
+    <style>
+      body {
+        width: 100%;
+        height: auto;
+        background-color: #faf0e6;
+        color: #111;
+      }
+      p {
+        display: none;
+        width: 50%;
+        padding: 10px;
+        background-color: #e6b38b;
+        font-size: 13px;
+        line-height: 17px;
+        color: #faf0e6;
+      }
+
+      p:nth-of-type(1) {
+        color: #faf0e6;
+        display: block;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btnUser = document.getElementById("btnUser");
+        const resData = document.getElementById("resData");
+        const resDataTitle = document.getElementById("resDataTitle");
+
+        const btnUser2 = document.getElementById("btnUser2");
+        const resData2 = document.getElementById("resData2");
+        const resDataTitle2 = document.getElementById("resDataTitle2");
+
+        btnUser.onclick = () => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "./data/user.json");
+
+          xhr.send();
+
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                const res = xhr.responseText;
+                resData.innerText = res;
+                resDataTitle.style.display = "block";
+                resData.style.display = "block";
+              }
+            }
+          };
+        };
+
+        btnUser2.onclick = () => {
+          fetch("./data/user.json")
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              resData2.innerText = JSON.stringify(data, undefined, 8);
+              resData2.style.display = "block";
+              resDataTitle2.style.display = "block";
+            })
+            .catch((err) => {
+              resData2.innerHTML = err;
+              resData2.style.display = "block";
+              resDataTitle2.style.display = "block";
+            })
+            .finally(() => {
+              console.log("Request Finished.");
+            });
+        };
+
+        const btnUsers = document.getElementById("btnUsers");
+
+        btnUsers.onclick = async () => {
+          const response = await fetch("./data/users.json");
+          const data = await response.json();
+          usersData.innerText = JSON.stringify(data, null, "\t");
+          usersData.style.display = "block";
+          usersDataTitle.style.display = "block";
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <h3>4. AJAX (Asynchronous Javascript And XML)</h3>
+    <p>
+      AJAX stands for Asynchronous Javascript And XML. Asynchronous means that
+      the client doesn' need to wait server's response and enables the client to
+      do whatever it has to do. This is what it is called "fire-and-forget". The
+      client "fires" a request to server and "forgets" about it, until server
+      responds.
+    </p>
+
+    <h4>4.1 Example - XMLHttpRequest</h4>
+
+    <button id="btnUser">Request for user data</button>
+    <h5 id="resDataTitle" style="display: none">4.1.1 Response Data</h5>
+    <p id="resData"></p>
+
+    <h4>4.2 Example - fetch() function</h4>
+    <button id="btnUser2">Request for user data</button>
+    <h5 id="resDataTitle2" style="display: none">4.2.1 Response Data</h5>
+    <p id="resData2"></p>
+
+    <h4>4.3 Example - async fetch() multiple users data</h4>
+    <button id="btnUsers">Request for users data</button>
+    <h5 id="usersDataTitle" style="display: none">4.3.1 Response Data</h5>
+    <p id="usersData"></p>
+  </body>
+</html>
